@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9111fc09-a74f-4c35-a1c2-b79d6dc319aa" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ighWyhLU3Q8cN4Qi4a2DwQjmOX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.vsu.demyanov" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.vsu.demyanov.Main" />
+      <module name="railRoads" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="WindowStateProjectService">
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602338469836">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1602338469836" />
+    <state x="453" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1602342728661">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="453" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800/-2560.-1022.2560.1440@0.0.1280.800" timestamp="1602342728661" />
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602342112668">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800/-2560.-1022.2560.1440@0.0.1280.800" timestamp="1602342112668" />
+    <state x="128" y="23" width="1024" height="724" key="SettingsEditor" timestamp="1602338459964">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="128" y="23" width="1024" height="724" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1602338459964" />
+    <state x="399" y="213" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1602344437743">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="399" y="213" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.800/-2560.-1022.2560.1440@0.0.1280.800" timestamp="1602344437742" />
+    <state x="289" y="63" key="new project wizard" timestamp="1602338350750">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="289" y="63" key="new project wizard/0.0.1280.800@0.0.1280.800" timestamp="1602338350750" />
+    <state x="305" y="185" width="670" height="675" key="run.anything.popup" timestamp="1602338570778">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="185" width="670" height="675" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1602338570778" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1602343784771">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.-1022.2560.1440@0.0.1280.800" timestamp="1602343784771" />
+  </component>
+</project>
