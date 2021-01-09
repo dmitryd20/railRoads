@@ -8,31 +8,20 @@ import java.util.List;
 
 public class Route implements DTOConvertible<RouteDTO> {
 
-    private int number;
-    private String name;
-    private Schedule schedule;
-    private StartPoint startPoint;
-    private FinishPoint finishPoint;
-    private List<Waypoint> waypoints;
-
-    public Route(int number,
-                 String name,
-                 Schedule schedule,
-                 StartPoint startPoint,
-                 FinishPoint finishPoint,
-                 List<Waypoint> waypoints) {
-        this.number = number;
-        this.name = name;
-        this.schedule = schedule;
-        this.startPoint = startPoint;
-        this.finishPoint = finishPoint;
-        this.waypoints = waypoints;
-    }
+    private final int number;
+    private final String name;
+    private final Schedule schedule;
 
     public Route(RouteDTO dto) {
         number = dto.getNumber();
         name = dto.getName();
         schedule = new Schedule(dto.getSchedule());
+    }
+
+    public Route(int number, String name, Schedule schedule) {
+        this.number = number;
+        this.name = name;
+        this.schedule = schedule;
     }
 
     public int getNumber() {
@@ -45,30 +34,6 @@ public class Route implements DTOConvertible<RouteDTO> {
 
     public Schedule getSchedule() {
         return schedule;
-    }
-
-    public StartPoint getStartPoint() {
-        return startPoint;
-    }
-
-    public void setStartPoint(StartPoint startPoint) {
-        this.startPoint = startPoint;
-    }
-
-    public FinishPoint getFinishPoint() {
-        return finishPoint;
-    }
-
-    public void setFinishPoint(FinishPoint finishPoint) {
-        this.finishPoint = finishPoint;
-    }
-
-    public List<Waypoint> getWaypoints() {
-        return waypoints;
-    }
-
-    public void setWaypoints(List<Waypoint> waypoints) {
-        this.waypoints = waypoints;
     }
 
     @Override

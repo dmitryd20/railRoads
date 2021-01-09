@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Router {
 
-    private Stack<ViewModule> viewModules = new Stack<>();
+    private final Stack<ViewModule> viewModules = new Stack<>();
 
     public void push(ViewModule module) {
         viewModules.push(module);

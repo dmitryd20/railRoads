@@ -1,17 +1,16 @@
 package ru.vsu.demyanov.models.entity.waypoints;
 
 import ru.vsu.demyanov.models.dto.WaypointDTO;
-import ru.vsu.demyanov.models.entity.Station;
 import ru.vsu.demyanov.models.entity.Time;
 
 public class FinishPoint extends Waypoint {
 
-    public FinishPoint(Station station, Time arrival) {
-        super(station, arrival, null);
+    public FinishPoint(int stationId, Time arrival) {
+        super(stationId, arrival, null);
     }
 
     public FinishPoint(WaypointDTO dto) {
-        this(new Station(dto.getStationDTO()), new Time(dto.getArrival()));
+        this(dto.getStationId(), new Time(dto.getArrival()));
     }
 
     @Override
@@ -21,6 +20,6 @@ public class FinishPoint extends Waypoint {
 
     @Override
     public WaypointDTO toDTO() {
-        return new WaypointDTO(getStation().getId(), getArrival().toDTO(), null);
+        return new WaypointDTO(getStationId(), getArrival().toDTO(), null);
     }
 }

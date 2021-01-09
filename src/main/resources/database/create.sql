@@ -9,7 +9,7 @@ CREATE TABLE "public"."route" (
     "id" integer,
     "name" varchar(100),
     "schedule" integer NOT NULL,
-    PRIMARY KEY ("id"),
+    PRIMARY KEY ("id")
 );
 
 CREATE TABLE "public"."waypoint" (

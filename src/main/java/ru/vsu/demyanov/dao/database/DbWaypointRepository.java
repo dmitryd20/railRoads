@@ -3,9 +3,7 @@ package ru.vsu.demyanov.dao.database;
 import ru.vsu.demyanov.dao.WaypointRepository;
 import ru.vsu.demyanov.models.ErrorType;
 import ru.vsu.demyanov.models.Result;
-import ru.vsu.demyanov.models.dto.RouteDTO;
 import ru.vsu.demyanov.models.dto.WaypointDTO;
-import ru.vsu.demyanov.models.entity.waypoints.Waypoint;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -55,6 +53,58 @@ public class DbWaypointRepository implements WaypointRepository {
     }
 
     @Override
+    public Result<WaypointDTO> getStartFor(int routeId) {
+        try (Statement stmt = connection.createStatement()) {
+            try (ResultSet rs = stmt.executeQuery("SELECT station_id, departure " +
+                    "FROM waypoint " +
+                    "WHERE route_id = " + routeId +
+                    " AND arrival is null")) {
+                if (rs.next()) {
+                    Integer departure = rs.getInt("departure");
+                    if (rs.wasNull()) {
+                        departure = null;
+                    }
+                    return Result.success(new WaypointDTO(
+                            rs.getInt("station_id"),
+                            null,
+                            departure
+                    ));
+                } else {
+                    return Result.fail(ErrorType.NOT_FOUND);
+                }
+            }
+        } catch (SQLException e) {
+            return Result.fail(ErrorType.SQL_ERROR);
+        }
+    }
+
+    @Override
+    public Result<WaypointDTO> getFinishFor(int routeId) {
+        try (Statement stmt = connection.createStatement()) {
+            try (ResultSet rs = stmt.executeQuery("SELECT station_id, arrival " +
+                    "FROM waypoint " +
+                    "WHERE route_id = " + routeId +
+                    " AND waypoint.departure is null")) {
+                if (rs.next()) {
+                    Integer arrival = rs.getInt("arrival");
+                    if (rs.wasNull()) {
+                        arrival = null;
+                    }
+                    return Result.success(new WaypointDTO(
+                            rs.getInt("station_id"),
+                            arrival,
+                            null
+                    ));
+                } else {
+                    return Result.fail(ErrorType.NOT_FOUND);
+                }
+            }
+        } catch (SQLException e) {
+            return Result.fail(ErrorType.SQL_ERROR);
+        }
+    }
+
+    @Override
     public Result<Void> add(WaypointDTO newEntity, int routeId) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO waypoint(route_id, station_id, arrival, departure) VALUES(?, ?, ?, ?)")
@@ -62,8 +112,16 @@ public class DbWaypointRepository implements WaypointRepository {
             int count = 1;
             preparedStatement.setInt(count++, routeId);
             preparedStatement.setInt(count++, newEntity.getStationId());
-            preparedStatement.setInt(count++, newEntity.getArrival());
-            preparedStatement.setInt(count, newEntity.getDeparture());
+            if (newEntity.getArrival() == null) {
+                preparedStatement.setNull(count++, Types.INTEGER);
+            } else {
+                preparedStatement.setInt(count++, newEntity.getArrival());
+            }
+            if (newEntity.getDeparture() == null) {
+                preparedStatement.setNull(count, Types.INTEGER);
+            } else {
+                preparedStatement.setInt(count, newEntity.getDeparture());
+            }
             preparedStatement.executeUpdate();
             return Result.success(null);
         } catch (SQLException e) {

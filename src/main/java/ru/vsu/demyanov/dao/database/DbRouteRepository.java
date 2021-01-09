@@ -68,6 +68,9 @@ public class DbRouteRepository implements Repository<RouteDTO> {
             preparedStatement.executeUpdate();
             return Result.success(null);
         } catch (SQLException e) {
+            if (e.getMessage().contains("duplicate")) {
+                return Result.fail(ErrorType.ALREADY_EXISTS);
+            }
             return Result.fail(ErrorType.SQL_ERROR);
         }
     }

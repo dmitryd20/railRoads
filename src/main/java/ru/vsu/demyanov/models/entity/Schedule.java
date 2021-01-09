@@ -4,7 +4,7 @@ import ru.vsu.demyanov.models.DTOConvertible;
 
 public class Schedule implements DTOConvertible<Integer> {
 
-    private int bitmask;
+    private final int bitmask;
 
     public Schedule(int bitmask) {
         this.bitmask = bitmask;
@@ -26,6 +26,10 @@ public class Schedule implements DTOConvertible<Integer> {
         if (saturday)  mask += 1 << 5;
         if (sunday)    mask += 1 << 6;
         bitmask = mask;
+    }
+
+    public boolean hasDay(int dayNumber) {
+        return (bitmask >> dayNumber) % 2 > 0;
     }
 
     @Override

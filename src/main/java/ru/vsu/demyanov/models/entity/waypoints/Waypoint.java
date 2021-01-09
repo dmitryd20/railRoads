@@ -2,29 +2,28 @@ package ru.vsu.demyanov.models.entity.waypoints;
 
 import ru.vsu.demyanov.models.DTOConvertible;
 import ru.vsu.demyanov.models.dto.WaypointDTO;
-import ru.vsu.demyanov.models.entity.Station;
 import ru.vsu.demyanov.models.entity.Time;
 
 public class Waypoint implements DTOConvertible<WaypointDTO> {
 
-    private Station station;
-    private Time arrival;
-    private Time departure;
+    private final int stationId;
+    private final Time arrival;
+    private final Time departure;
 
-    public Waypoint(Station station, Time arrival, Time departure) {
-        this.station = station;
+    public Waypoint(int stationId, Time arrival, Time departure) {
+        this.stationId = stationId;
         this.arrival = arrival;
         this.departure = departure;
     }
 
     public Waypoint(WaypointDTO dto) {
+        this.stationId = dto.getStationId();
         this.arrival = new Time(dto.getArrival());
         this.departure = new Time(dto.getDeparture());
-        this.station = new Station(dto.getStationDTO());
     }
 
-    public Station getStation() {
-        return station;
+    public int getStationId() {
+        return stationId;
     }
 
     public Time getArrival() {
@@ -37,7 +36,7 @@ public class Waypoint implements DTOConvertible<WaypointDTO> {
 
     @Override
     public WaypointDTO toDTO() {
-        return new WaypointDTO(station.getId(), arrival.toDTO(), departure.toDTO());
+        return new WaypointDTO(stationId, arrival.toDTO(), departure.toDTO());
     }
 }
 

@@ -2,9 +2,9 @@ package ru.vsu.demyanov.models.dto;
 
 public class RouteDTO {
 
-    private int number;
-    private String name;
-    private int schedule;
+    private final int number;
+    private final String name;
+    private final int schedule;
 
     public RouteDTO(int number,
                     String name,

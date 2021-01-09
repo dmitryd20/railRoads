@@ -1,7 +1,10 @@
 package ru.vsu.demyanov.view.modules;
 
+import ru.vsu.demyanov.models.ErrorType;
 import ru.vsu.demyanov.models.entity.Route;
 import ru.vsu.demyanov.service.RouteService;
+import ru.vsu.demyanov.service.StationService;
+import ru.vsu.demyanov.service.WaypointService;
 import ru.vsu.demyanov.view.InputHandler;
 import ru.vsu.demyanov.view.MenuOption;
 import ru.vsu.demyanov.view.Router;
@@ -13,11 +16,19 @@ import java.util.Map;
 
 public final class RouteList extends ViewModule {
 
-    private RouteService service;
+    private final RouteService routeService;
+    private final WaypointService waypointService;
+    private final StationService stationService;
 
-    RouteList(Router router, InputHandler inputHandler, RouteService service) {
+    RouteList(Router router,
+              InputHandler inputHandler,
+              RouteService routeService,
+              WaypointService waypointService,
+              StationService stationService) {
         super(router, inputHandler);
-        this.service = service;
+        this.routeService = routeService;
+        this.waypointService = waypointService;
+        this.stationService = stationService;
     }
 
     @Override
@@ -27,9 +38,9 @@ public final class RouteList extends ViewModule {
 
     @Override
     protected void showContent() {
-        var routes = service.getRoutes();
+        var routes = routeService.getRoutes();
         if (routes.isError()) {
-            System.out.println(routes.getError().getMessage());
+            showError(routes.getError(), this::showContent);
             return;
         }
         for (Route route : routes.getValue()) {
@@ -45,15 +56,30 @@ public final class RouteList extends ViewModule {
     }
 
     private String routeInfo(Route route) {
+
+        var start = waypointService.getStartForRoute(route.getNumber());
+        var finish = waypointService.getFinishForRoute(route.getNumber());
+
+        if (start.isError() || finish.isError()) {
+            return  Strings.Error.DATA_ERROR;
+        }
+
+        var startStation = stationService.getStationById(start.getValue().getStationId());
+        var finishStation = stationService.getStationById(finish.getValue().getStationId());
+
+        if (startStation.isError() || finishStation.isError()) {
+            return  Strings.Error.DATA_ERROR;
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder
                 .append(route.getNumber())
                 .append(' ')
                 .append(route.getName() == null ? "" : route.getName())
                 .append(" из ")
-                .append(route.getStartPoint().getStation().getName())
+                .append(startStation.getValue().getName())
                 .append(" в ")
-                .append(route.getFinishPoint().getStation().getName())
+                .append(finishStation.getValue().getName())
                 .toString();
 
     }

@@ -8,8 +8,8 @@ import java.util.Map;
 
 public abstract class ViewModule {
 
-    private Router router;
-    private InputHandler inputHandler;
+    private final Router router;
+    private final InputHandler inputHandler;
 
     protected ViewModule(Router router, InputHandler inputHandler) {
         this.router = router;
@@ -43,11 +43,12 @@ public abstract class ViewModule {
     }
 
     protected void showError(ErrorType error, Action onRetry) {
-        System.out.println(Strings.Common.OPTIONS);
+        System.out.println(Strings.Error.TITLE);
         System.out.println(error.getMessage());
         Map<Integer, MenuOption> options = new HashMap<>();
         options.put(1, new MenuOption(Strings.Common.RETRY, onRetry));
         options.put(0, new MenuOption(Strings.Common.GO_BACK, this::close));
+        showOptions(options);
         askForOption(options, false);
     }
 
@@ -65,7 +66,7 @@ public abstract class ViewModule {
     }
 
     private void showOptions(Map<Integer, MenuOption> options) {
-        options.forEach((key, option) -> System.out.println(key + ": " + option.getName()));;
+        options.forEach((key, option) -> System.out.println(key + ": " + option.getName()));
     }
 
     private void askForOption() {
@@ -79,6 +80,7 @@ public abstract class ViewModule {
         System.out.print(Strings.Common.CHOOSE_OPTION);
         Integer option = inputHandler.readInt();
         MenuOption action = options.get(option);
+        System.out.println();
         if (action == null) {
             askForOption(options, true);
         } else {

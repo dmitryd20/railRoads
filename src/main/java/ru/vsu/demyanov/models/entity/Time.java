@@ -4,7 +4,7 @@ import ru.vsu.demyanov.models.DTOConvertible;
 
 public class Time implements DTOConvertible<Integer>, Comparable<Time> {
 
-    private int time;
+    private final int time;
 
     public Time(int time) {
         this.time = time;

@@ -6,7 +6,7 @@ import ru.vsu.demyanov.models.dto.StationDTO;
 public class Station implements DTOConvertible<StationDTO> {
 
     private int id;
-    private String name;
+    private final String name;
 
     public Station(int id, String name) {
         this.id = id;

@@ -6,8 +6,6 @@ public class WaypointDTO {
     private Integer arrival;
     private Integer departure;
 
-    private StationDTO stationDTO;
-
     public WaypointDTO(Integer stationId, Integer arrival, Integer departure) {
         this.station_id = stationId;
         this.arrival = arrival;
@@ -36,13 +34,5 @@ public class WaypointDTO {
 
     void setDeparture(Integer departure) {
         this.departure = departure;
-    }
-
-    public StationDTO getStationDTO() {
-        return stationDTO;
-    }
-
-    public void setStationDTO(StationDTO stationDTO) {
-        this.stationDTO = stationDTO;
     }
 }
